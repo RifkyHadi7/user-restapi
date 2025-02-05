@@ -9,6 +9,7 @@ networks:
     driver: bridge
 
 services:
+  # Database Service
   postgres_db:
     image: bitnami/postgresql:latest
     platform: linux/amd64
@@ -22,6 +23,34 @@ services:
       - POSTGRESQL_USERNAME=${POSTGRESQL_USERNAME}
       - POSTGRESQL_PASSWORD=${POSTGRESQL_PASSWORD}
       - POSTGRESQL_POSTGRES_PASSWORD=${POSTGRESQL_PASSWORD}
+    networks:
+      - docker-network
+    logging: *default-logging
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "${POSTGRESQL_USERNAME}", "-d", "${POSTGRESQL_DATABASE}"]
+      interval: 10s
+      retries: 5
+      start_period: 10s
+      timeout: 5s
+
+  # Application Service 
+  nestjs-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - NODE_ENV=${NODE_ENV}
+      - JWT_SECRET=${JWT_SECRET}
+    depends_on:
+      - postgres_db
+    entrypoint: ["sh", "-c", "until pg_isready -h ${DB_HOST} -U ${DB_USER} -d ${DB_NAME}; do echo waiting for postgres_db; sleep 5; done; exec npm run start:migrate-prod"]
     networks:
       - docker-network
     logging: *default-logging
