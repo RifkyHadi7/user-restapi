@@ -2,7 +2,9 @@
 
 Rest API for user authentication and registration using **Nest.js**, utilising module, controller, and service architecture. This application is contenerised with **Docker** as well as the **PostgreSQL** database.
 
-### API Documentation [Postman Documentation](https://www.postman.com/spacecraft-astronaut-86332905/rest-api-user-auth-and-register/documentation/j0w4ihq/user-rest-api)
+### API Documentation 
+#### [Postman Documentation](https://www.postman.com/spacecraft-astronaut-86332905/rest-api-user-auth-and-register/documentation/j0w4ihq/user-rest-api)
+
 REST API documentation that contains routes, raw json requests, and case-specific response examples (such as success, created, conflict, bad request, etc.) with **Postman**
 
 
