@@ -2,7 +2,7 @@ import { Body, Controller, Get, Post, UseGuards, Req, HttpStatus, Res } from '@n
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { successResponse } from '../config/responses.config';
-import { LoginDto } from 'src/dto/login.dto';
+import { LoginDto } from '../dto/login.dto';
 
 @Controller('auth')
 export class AuthController {
