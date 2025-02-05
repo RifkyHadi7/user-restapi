@@ -112,22 +112,32 @@ docker compose up
 
  1. **Generate** migration file by viewing the entities directory as a table
 
+  ```
     npm run migration:generate --name={migration_name}
+  ```
 
 2. **Run** migration file
 
+  ```
     npm run migration:run
+  ```
 
 ### Running Integration Test
 
 Test **all** integration test file
 
+  ```
     npm run test:e2e
+  ```
 
 or test **spesific** test file
 
+  ```
     npm run test:e2e {file_name}
+  ```
 
 example : to run auth test
 
+  ```
     npm run test:e2e auth
+  ```
