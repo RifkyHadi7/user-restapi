@@ -39,7 +39,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - ${PORT}:3000
+      - ${PORT}:${PORT}
     environment:
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}

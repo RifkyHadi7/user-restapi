@@ -24,4 +24,4 @@ RUN npm install @nestjs/passport passport passport-jwt \
 RUN npm run build
 
 # Expose the port used by the application
-EXPOSE 3000
+EXPOSE ${PORT}
