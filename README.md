@@ -60,7 +60,7 @@ REST API documentation that contains routes, raw json requests, and case-specifi
 
 How to install
 
-    npm install {dependencies}
+    npm install
 
 
 # ⚙️ Configuration
